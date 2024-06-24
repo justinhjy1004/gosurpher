@@ -6,3 +6,4 @@ This is my project as part of an effort to learn `Go` with `HTMX`. This is done 
 TODO
 
 ## Why?
+This is a problem with me. 
