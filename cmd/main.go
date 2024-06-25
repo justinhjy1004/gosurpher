@@ -3,14 +3,14 @@ package main
 import (
 	"gosurpher/views"
 
-	"github.com/a-h/templ" 
+	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
 )
 
 func homeHandler(c echo.Context) error {
-	
+
 	return render(c, views.Home("Page Title"))
-	
+
 }
 
 func render(c echo.Context, cmp templ.Component) error {
