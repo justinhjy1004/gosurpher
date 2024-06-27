@@ -35,20 +35,46 @@ func Blog(blog models.Blog) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<header><div class=\"container\"><div id=\"branding\"><h1>My Simple Blog</h1></div><nav><ul><li><a href=\"#\">Home</a></li><li><a href=\"#\">About</a></li><li><a href=\"#\">Contact</a></li></ul></nav></div></header><section id=\"showcase\"><div class=\"container\"><h1>Welcome to My Blog</h1><h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section id=\"showcase\"><div class=\"container\"><h1>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 26, Col: 29}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 12, Col: 29}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h2><p>Sharing my thoughts and experiences with the world.</p></div></section><div class=\"container\"><article><h2>Blog Post Title</h2><p><small>Posted on June 26, 2024 by Author</small></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula felis ut nulla suscipit, nec dignissim enim convallis. Sed eget vestibulum libero. Sed vehicula ante nec arcu interdum, in sagittis eros pulvinar. Cras id mauris vel lorem consectetur facilisis. Curabitur laoreet mi vel nisl volutpat, sed scelerisque libero viverra.</p><p>Proin vulputate, ligula ac bibendum tincidunt, lacus dui tempor lacus, et tristique elit nunc id felis. Nulla facilisi. Nullam ut erat quis purus aliquam vestibulum. Aenean nec mauris nec libero pretium ultricies ut sit amet est. Sed eget libero id est dictum vestibulum. Curabitur ac justo vel elit sodales vestibulum.</p><p>Vivamus sed eros quis metus bibendum scelerisque. Aenean a nisi sit amet arcu blandit tincidunt. Sed sit amet facilisis lectus, at venenatis sapien. Proin gravida vestibulum lorem, at placerat lectus fringilla vel. Nam suscipit lacus vel diam dapibus, sit amet scelerisque libero tincidunt. Donec congue est a quam interdum, nec tincidunt nisl tincidunt.</p></article></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Autor)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 13, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p></div></section><div class=\"container\"><article>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Content)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 19, Col: 26}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</article></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
