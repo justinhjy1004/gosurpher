@@ -1,7 +1,9 @@
 // views/blog.templ
 package views
 
-templ Blog() {
+import ("gosurpher/models")
+
+templ Blog(blog models.Blog) {
     @Layout("Blog"){
     <header>
         <div class="container">
@@ -21,6 +23,7 @@ templ Blog() {
     <section id="showcase">
         <div class="container">
             <h1>Welcome to My Blog</h1>
+            <h2> { blog.Title } </h2>
             <p>Sharing my thoughts and experiences with the world.</p>
         </div>
     </section>

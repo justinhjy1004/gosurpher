@@ -6,12 +6,9 @@ type Date struct {
 	day   int
 }
 
-type blog_post struct {
-	id      int
-	title   string
-	autor   string
-	content string
-	date    Date
-	tags    []string
-	status  string
+type Blog struct {
+	Id      int
+	Title   string
+	Autor   string
+	Content string
 }

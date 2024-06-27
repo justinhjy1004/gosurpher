@@ -1,6 +1,7 @@
 package main
 
 import (
+	"gosurpher/models"
 	"gosurpher/views"
 
 	"github.com/a-h/templ"
@@ -15,7 +16,14 @@ func homeHandler(c echo.Context) error {
 
 func blogHandler(c echo.Context) error {
 
-	return render(c, views.Blog())
+	b := models.Blog{
+		Id:      1,
+		Autor:   "justino",
+		Title:   "test",
+		Content: "go",
+	}
+
+	return render(c, views.Blog(b))
 
 }
 
