@@ -18,8 +18,17 @@ templ Layout(title string) {
             header {
                 background-color: #333;
                 color: #fff;
-                padding: 1em 0;
+                padding: 1.5em 0;
                 text-align: center;
+                display: flex;
+            }
+            .left-header-span {
+            margin-left: 2%;
+            margin-right: auto;
+            }
+            .right-header-span {
+            margin-left: auto;
+            margin-right: 20%;
             }
             main {
                 max-width: 800px;
@@ -49,11 +58,11 @@ templ Layout(title string) {
                 text-decoration: underline;
             }
         </style>
-			<title>Minimalist Blog</title>
 		</head>
 		<body>
-			<header>
-				<h1>My Minimalist Blog</h1>
+			<header class="header">
+				<span class="left-header-span">Part 1</span>
+                <span class="right-header-span">Part 2</span>
 			</header>
 			<main>
 				{ children... }
