@@ -8,61 +8,13 @@ templ Layout(title string) {
 			<script src="/assets/js/htmx.min.js"></script>
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 1.5em 0;
-                text-align: center;
-                display: flex;
-            }
-            .left-header-span {
-            margin-left: 2%;
-            margin-right: auto;
-            }
-            .right-header-span {
-            margin-left: auto;
-            margin-right: 20%;
-            }
-            main {
-                max-width: 800px;
-                margin: 2em auto;
-                padding: 1em;
-                background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-            h1, h2, h3 {
-                color: #333;
-            }
-            p {
-                line-height: 1.6;
-            }
-            footer {
-                text-align: center;
-                padding: 1em 0;
-                color: #777;
-                font-size: 0.8em;
-            }
-            a {
-                color: #3498db;
-                text-decoration: none;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-        </style>
+			<script src="https://unpkg.com/htmx.org@1.9.11"></script>
+			<link rel="stylesheet" href="/static/css/output.css"/>
 		</head>
 		<body>
-			<header class="header">
-				<span class="left-header-span">Part 1</span>
-                <span class="right-header-span">Part 2</span>
+			<header class="text-3xl font-bold underline">
+				<span>Part 1</span>
+				<span>Part 2</span>
 			</header>
 			<main>
 				{ children... }
