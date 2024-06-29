@@ -31,6 +31,7 @@ func render(c echo.Context, cmp templ.Component) error {
 func main() {
 
 	e := echo.New()
+	e.Static("../static", "static")
 	e.GET("/", handlers.HomeHandler)
 	e.GET("/blog", blogHandler)
 	e.Logger.Fatal(e.Start(":42069"))

@@ -9,19 +9,20 @@ templ Layout(title string) {
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<script src="https://unpkg.com/htmx.org@1.9.11"></script>
-			<link rel="stylesheet" href="/static/css/output.css"/>
+			<link rel="stylesheet" href="../static/css/output.css"/>
 		</head>
-		<body>
-			<header class="text-3xl font-bold underline">
-				<span>Part 1</span>
-				<span>Part 2</span>
-			</header>
-			<main>
-				{ children... }
-			</main>
-			<footer>
-				<p>&copy; 2024 My Minimalist Blog</p>
-			</footer>
-		</body>
+		<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
+			<div class="relative flex items-center">
+				<a class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto" href="/blog">
+					<span class="sr-only">Tailwind CSS home page</span>
+				</a>
+			</div>
+		</div>
+		<main>
+			{ children... }
+		</main>
+		<footer>
+			<p>&copy; 2024 My Minimalist Blog</p>
+		</footer>
 	</html>
 }
