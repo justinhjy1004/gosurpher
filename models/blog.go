@@ -1,13 +1,12 @@
 package models
 
-type Date struct {
-	year  int
-	month int
-	day   int
-}
+import (
+	"time"
+)
 
 type Blog struct {
 	Id      int
+	Date    time.Time
 	Title   string
 	Autor   string
 	Content string
