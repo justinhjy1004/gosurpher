@@ -1,13 +1,16 @@
 package main
 
 import (
-	"context"
 	"gosurpher/handlers"
-	"log"
 
-	firebase "firebase.google.com/go"
 	"github.com/labstack/echo/v4"
 )
+
+var route = map[string]interface{}{
+	"/":               handlers.HomeHandler,
+	"/blog":           handlers.BlogHandler,
+	"/hypergeometric": handlers.HypergeometricHandler,
+}
 
 func main() {
 
@@ -16,23 +19,11 @@ func main() {
 	// Static CSS
 	e.Static("/", "static/")
 
-	e.GET("/", handlers.HomeHandler)
-	e.GET("/blog", handlers.BlogHandler)
+	// Rendering all pages per the routes to each page
+	for r, h := range route {
+		e.GET(r, h.(func(c echo.Context) error))
+	}
+
 	e.Logger.Fatal(e.Start(":42069"))
-
-	// Use the application default credentials
-	projectID := "GoSurpher"
-	ctx := context.Background()
-	conf := &firebase.Config{ProjectID: projectID}
-	app, err := firebase.NewApp(ctx, conf)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	client, err := app.Firestore(ctx)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer client.Close()
 
 }

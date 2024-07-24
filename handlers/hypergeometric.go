@@ -8,9 +8,9 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func BlogHandler(c echo.Context) error {
+func HypergeometricHandler(c echo.Context) error {
 
-	b1 := models.Blog{
+	b := models.Blog{
 		Id:      1,
 		Date:    time.Date(2024, time.July, 24, 0, 0, 0, 0, time.UTC),
 		Autor:   "Justin Ho",
@@ -19,26 +19,6 @@ func BlogHandler(c echo.Context) error {
 		Route:   "hypergeometric",
 	}
 
-	b2 := models.Blog{
-		Id:      1,
-		Date:    time.Date(2024, time.July, 1, 0, 0, 0, 0, time.UTC),
-		Autor:   "justino",
-		Title:   "test",
-		Content: "go",
-		Route:   "test",
-	}
-
-	b3 := models.Blog{
-		Id:      1,
-		Date:    time.Date(2024, time.July, 1, 0, 0, 0, 0, time.UTC),
-		Autor:   "justino",
-		Title:   "test",
-		Content: "go",
-		Route:   "test",
-	}
-
-	b := []models.Blog{b1, b2, b3}
-
-	return Render(c, views.Blog(b))
+	return Render(c, views.Hypergeometric(b))
 
 }
