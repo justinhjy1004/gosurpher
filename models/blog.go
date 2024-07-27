@@ -11,4 +11,5 @@ type Blog struct {
 	Autor   string
 	Content string
 	Route   string
+	Type    string
 }
