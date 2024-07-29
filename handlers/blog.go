@@ -36,7 +36,7 @@ func GenericBlogHandler(c echo.Context) error {
 
 	var b models.Blog
 
-	b = db.Select_blog_by_route(blog_type + "/" + route)
+	b = db.Select_blog_by_route("generic/" + blog_type + "/" + route)
 
 	var content []string
 	content = strings.Split(b.Content, "\n")

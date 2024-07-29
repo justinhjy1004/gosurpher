@@ -6,6 +6,13 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+var route = map[string]interface{}{
+	"/":                     handlers.HomeHandler,
+	"/blog":                 handlers.BlogHandler,
+	"/hypergeometric":       handlers.HypergeometricHandler,
+	"/generic/:type/:route": handlers.GenericBlogHandler,
+}
+
 func main() {
 
 	e := echo.New()
@@ -20,11 +27,4 @@ func main() {
 
 	e.Logger.Fatal(e.Start(":42069"))
 
-}
-
-var route = map[string]interface{}{
-	"/":               handlers.HomeHandler,
-	"/blog":           handlers.BlogHandler,
-	"/hypergeometric": handlers.HypergeometricHandler,
-	":type/:route":    handlers.GenericBlogHandler,
 }
