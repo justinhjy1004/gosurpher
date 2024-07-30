@@ -9,12 +9,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// This Renders the 'front page' of the blog
 func BlogHandler(c echo.Context) error {
 
 	var b []models.Blog
 
 	b = db.Select_blogs()
 
+	// Create a 300 character long summary for rendering in the card
 	var summary []string
 	var max_length int = 300
 
@@ -29,6 +31,7 @@ func BlogHandler(c echo.Context) error {
 
 }
 
+// Handles generic blogs, with routes starting with generic
 func GenericBlogHandler(c echo.Context) error {
 
 	route := c.Param("route")

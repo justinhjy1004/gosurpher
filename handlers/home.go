@@ -8,6 +8,6 @@ import (
 
 func HomeHandler(c echo.Context) error {
 
-	return Render(c, views.Home("Page Title"))
+	return Render(c, views.Home("Gosurpher | Home"))
 
 }
