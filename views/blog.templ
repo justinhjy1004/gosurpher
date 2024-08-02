@@ -55,7 +55,13 @@ templ BlogPage(blog models.Blog, content []string) {
 				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 					<div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
 						<h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">{ blog.Title }</h2>
-
+						<div class="flex flex-col gap-2 text-md">
+						<p class="text-base font-bold tracking-wide text-gray-900"></p>
+						<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Autor }</a>
+						<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Type }</a>
+						<p >{ blog.Date.Format("01-02-2006") }</p>
+						</div>
+						<br>
 						for i := 0; i < len(content); i++ {
 							if i % 2 == 0 {
 								<p class="mb-4 font-light">
