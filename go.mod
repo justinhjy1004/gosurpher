@@ -14,6 +14,7 @@ require (
 	firebase.google.com/go v3.13.0+incompatible // indirect
 	github.com/a-h/templ v0.2.707 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.4.1 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
