@@ -5,6 +5,33 @@ import (
 	"gosurpher/models"
 )
 
+var link_class = "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"
+
+templ Link(link models.Link) {
+	<a class={ link_class } href={ templ.URL(link.Url) }>[{ link.Text }]</a>
+}
+
+
+templ Paragraph(p models.Paragraph) {
+	
+	if len(p.Texts) == 1 {
+		{ p.Texts[0] }
+	} else if len(p.Texts) == 2 {
+		{ p.Texts[0] }
+		@Link(p.Urls[0])
+		{ p.Texts[1] }
+	} else {
+		{ p.Texts[0] }
+			for i := 1; i < len(p.Texts) - 1; i++ {
+				{ p.Texts[i] }
+				@Link(p.Urls[i - 1])
+			}
+			{ p.Texts[len(p.Texts) - 1] }
+	
+	}
+	
+}
+
 templ BlogCard(blog models.Blog, summary string) {
 	<article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 		<div class="flex justify-between items-center mb-5 text-gray-500">
@@ -48,7 +75,7 @@ templ Blog(blogs []models.Blog, summary []string) {
 	}
 }
 
-templ BlogPage(blog models.Blog, content []string) {
+templ BlogPage(blog models.Blog, content []models.Paragraph) {
 	@Layout( blog.Title ) {
 		<div class="container mx-auto px-4 py-4 w-full items-center rounded-lg border shadow-md">
 			<section class="bg-white dark:bg-gray-900">
@@ -65,15 +92,26 @@ templ BlogPage(blog models.Blog, content []string) {
 						for i := 0; i < len(content); i++ {
 							if i % 2 == 0 {
 								<p class="mb-4 font-light">
-									{ content[i] }
+									@Paragraph(content[i])
 								</p>
 							} else {
 								<p class="mb-4 font-dark">
-									{ content[i] }
+									@Paragraph(content[i])
 								</p>
 							}
 						}
 					</div>
+					<ul>
+					<h3 class="text-xl font-extrabold dark:text-white">Links</h3>
+					for i := 0; i < len(content); i++ {
+						
+						if len(content[i].Urls) != 0 {
+							for j := 0; j < len(content[i].Urls); j++ {
+								<li>{ content[i].Urls[j].Text } - { content[i].Urls[j].Url }</li>
+							}
+						} 
+					}
+					</ul>
 				</div>
 			</section>
 		</div>

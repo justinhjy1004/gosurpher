@@ -12,9 +12,7 @@ import (
 // This Renders the 'front page' of the blog
 func BlogHandler(c echo.Context) error {
 
-	var b []models.Blog
-
-	b = db.Select_blogs()
+	var b []models.Blog = db.Select_blogs()
 
 	// Create a 300 character long summary for rendering in the card
 	var summary []string
@@ -37,13 +35,23 @@ func GenericBlogHandler(c echo.Context) error {
 	route := c.Param("route")
 	blog_type := c.Param("type")
 
-	var b models.Blog
+	var b models.Blog = db.Select_blog_by_route("generic/" + blog_type + "/" + route)
 
-	b = db.Select_blog_by_route("generic/" + blog_type + "/" + route)
+	var content []string = strings.Split(b.Content, "\n")
 
-	var content []string
-	content = strings.Split(b.Content, "\n")
+	var paragraphs []models.Paragraph
 
-	return Render(c, views.BlogPage(b, content))
+	for i := 0; i < len(content); i++ {
+		texts, links := TextLinkParser(content[i])
+		paragraphs = append(paragraphs, models.Paragraph{Texts: texts, Urls: links})
+	}
+
+	/* TODO
+	1. change blog page to receive content as []Paragraph
+	2. For each paragraph return text with link nested
+	3. render each page alternatively with light and dark texts
+	*/
+
+	return Render(c, views.BlogPage(b, paragraphs))
 
 }

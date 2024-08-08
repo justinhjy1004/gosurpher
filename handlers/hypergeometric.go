@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"gosurpher/db"
 	"gosurpher/models"
 	"gosurpher/views"
@@ -35,12 +34,10 @@ func HypergeometricHandler(c echo.Context) error {
 		AddSeries("Category A", generateBarItems()).
 		AddSeries("Category B", generateBarItems())
 
-	fmt.Println(bar.RenderSnippet().Option)
-	fmt.Println(bar.RenderSnippet().Script)
-	fmt.Println(bar.RenderSnippet().Element)
-
 	var b models.Blog = db.Select_blog_by_route("hypergeometric")
 
-	return Render(c, views.Hypergeometric(b, bar.RenderSnippet()))
+	bar_chart := RenderGoEcharts(bar.RenderSnippet())
+
+	return Render(c, views.Hypergeometric(b, bar_chart))
 
 }

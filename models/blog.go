@@ -13,3 +13,13 @@ type Blog struct {
 	Route   string
 	Type    string
 }
+
+type Link struct {
+	Text string
+	Url  string
+}
+
+type Paragraph struct {
+	Texts []string
+	Urls  []Link
+}
