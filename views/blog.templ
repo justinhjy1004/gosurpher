@@ -5,33 +5,34 @@ import (
 	"gosurpher/models"
 )
 
-var link_class = "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"
-
-templ Link(link models.Link) {
-	<a class={ link_class } href={ templ.URL(link.Url) }>[{ link.Text }]</a>
-}
-
-
-templ Paragraph(p models.Paragraph) {
-	
-	if len(p.Texts) == 1 {
-		{ p.Texts[0] }
-	} else if len(p.Texts) == 2 {
-		{ p.Texts[0] }
-		@Link(p.Urls[0])
-		{ p.Texts[1] }
-	} else {
-		{ p.Texts[0] }
-			for i := 1; i < len(p.Texts) - 1; i++ {
-				{ p.Texts[i] }
-				@Link(p.Urls[i - 1])
-			}
-			{ p.Texts[len(p.Texts) - 1] }
-	
+/*
+This is the rendering of the Blog's Main Page. This component receives a slice of Blogs
+alongside with a slice of the summary of the blog. 
+*/
+templ BlogMainPage(blogs []models.Blog, summary []string) {
+	@Layout("Gosurpher | Blogs") {
+		<section class="bg-white dark:bg-gray-900">
+			<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+				<div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+					<h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">My Blog</h2>
+					<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Just some display of the blogs that I have done.</p>
+				</div>
+				<div class="grid gap-8 lg:grid-cols-2">
+					// Iterate through the list of Blogs to generate the cards
+					for i := 0; i < len(blogs); i++ {
+						@BlogCard(blogs[i], summary[i])
+					}
+				</div>
+			</div>
+		</section>
 	}
-	
 }
 
+/*
+This component renders the card that displays the summary and information
+regarding the Blog of concern. Links the user to page and renders the 
+relevent blog in mind.
+*/
 templ BlogCard(blog models.Blog, summary string) {
 	<article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 		<div class="flex justify-between items-center mb-5 text-gray-500">
@@ -57,24 +58,37 @@ templ BlogCard(blog models.Blog, summary string) {
 	</article>
 }
 
-templ Blog(blogs []models.Blog, summary []string) {
-	@Layout("Gosurpher | Blogs") {
-		<section class="bg-white dark:bg-gray-900">
-			<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-				<div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-					<h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">My Blog</h2>
-					<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Welcome! This is where you can checkout some of the work that I have done so far. It is not much, but I hope you'd enjoy!</p>
-				</div>
-				<div class="grid gap-8 lg:grid-cols-2">
-					for i := 0; i < len(blogs); i++ {
-						@BlogCard(blogs[i], summary[i])
-					}
-				</div>
-			</div>
-		</section>
+// Component that renders individual links in blogs
+var link_class = "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"
+templ Link(link models.Link) {
+	<a class={ link_class } href={ templ.URL(link.Url) }>[{ link.Text }]</a>
+}
+
+/* 
+Component that renders each paragraphs. Written mainly to handle the presence of links
+within the text.
+*/
+templ Paragraph(p models.Paragraph) {
+
+	if len(p.Texts) == 1 { 
+		{ p.Texts[0] }
+	} else if len(p.Texts) == 2 { 
+		{ p.Texts[0] }
+		@Link(p.Urls[0])
+		{ p.Texts[1] }
+	} else { 
+		{ p.Texts[0] }
+			for i := 1; i < len(p.Texts) - 1; i++ {
+				{ p.Texts[i] }
+				@Link(p.Urls[i - 1])
+			}
+		{ p.Texts[len(p.Texts) - 1] }
 	}
 }
 
+/*
+Rendering of the actual blog page.
+*/
 templ BlogPage(blog models.Blog, content []models.Paragraph) {
 	@Layout( blog.Title ) {
 		<div class="container mx-auto px-4 py-4 w-full items-center rounded-lg border shadow-md">
@@ -89,6 +103,7 @@ templ BlogPage(blog models.Blog, content []models.Paragraph) {
 						<p >{ blog.Date.Format("01-02-2006") }</p>
 						</div>
 						<br>
+						// alternate between dark and light mode
 						for i := 0; i < len(content); i++ {
 							if i % 2 == 0 {
 								<p class="mb-4 font-light">
@@ -100,18 +115,7 @@ templ BlogPage(blog models.Blog, content []models.Paragraph) {
 								</p>
 							}
 						}
-					</div>
-					<ul>
-					<h3 class="text-xl font-extrabold dark:text-white">Links</h3>
-					for i := 0; i < len(content); i++ {
-						
-						if len(content[i].Urls) != 0 {
-							for j := 0; j < len(content[i].Urls); j++ {
-								<li>{ content[i].Urls[j].Text } - { content[i].Urls[j].Url }</li>
-							}
-						} 
-					}
-					</ul>
+					</div>	
 				</div>
 			</section>
 		</div>

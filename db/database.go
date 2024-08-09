@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"gosurpher/models"
+	"math/rand"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -34,6 +35,11 @@ func Select_blogs() []models.Blog {
 
 	rows.Close()
 	db.Close()
+
+	// Randomly render the order of the blogs
+	rand.Shuffle(len(blogs), func(i, j int) {
+		blogs[i], blogs[j] = blogs[j], blogs[i]
+	})
 
 	return (blogs)
 

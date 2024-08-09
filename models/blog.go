@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+/* Basic Blog structure */
 type Blog struct {
 	Id      int
 	Date    time.Time
@@ -19,6 +20,9 @@ type Link struct {
 	Url  string
 }
 
+/*
+Paragraph structure to render in Generic Blogs
+*/
 type Paragraph struct {
 	Texts []string
 	Urls  []Link

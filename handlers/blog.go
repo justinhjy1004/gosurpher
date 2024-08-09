@@ -25,32 +25,28 @@ func BlogHandler(c echo.Context) error {
 			summary = append(summary, b[i].Content[:max_length]+"...")
 		}
 	}
-	return Render(c, views.Blog(b, summary))
+	return Render(c, views.BlogMainPage(b, summary))
 
 }
 
 // Handles generic blogs, with routes starting with generic
 func GenericBlogHandler(c echo.Context) error {
 
+	// Get the parameters of route and type
 	route := c.Param("route")
 	blog_type := c.Param("type")
 
+	// Query blog by selecting the route
 	var b models.Blog = db.Select_blog_by_route("generic/" + blog_type + "/" + route)
 
+	// Split content into paragraphs
 	var content []string = strings.Split(b.Content, "\n")
-
 	var paragraphs []models.Paragraph
-
+	// Parse the texts and links and populate the Paragraph object
 	for i := 0; i < len(content); i++ {
 		texts, links := TextLinkParser(content[i])
 		paragraphs = append(paragraphs, models.Paragraph{Texts: texts, Urls: links})
 	}
-
-	/* TODO
-	1. change blog page to receive content as []Paragraph
-	2. For each paragraph return text with link nested
-	3. render each page alternatively with light and dark texts
-	*/
 
 	return Render(c, views.BlogPage(b, paragraphs))
 
