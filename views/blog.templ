@@ -88,6 +88,7 @@ templ Paragraph(p models.Paragraph) {
 
 /*
 Rendering of the actual blog page.
+TODO: Figure out how to use hx-get for button
 */
 templ BlogPage(blog models.Blog, content []models.Paragraph) {
 	@Layout( blog.Title ) {

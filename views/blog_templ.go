@@ -357,6 +357,7 @@ func Paragraph(p models.Paragraph) templ.Component {
 
 /*
 Rendering of the actual blog page.
+TODO: Figure out how to use hx-get for button
 */
 
 func BlogPage(blog models.Blog, content []models.Paragraph) templ.Component {
@@ -385,7 +386,7 @@ func BlogPage(blog models.Blog, content []models.Paragraph) templ.Component {
 			var templ_7745c5c3_Var25 string
 			templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 98, Col: 99}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 99, Col: 99}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 			if templ_7745c5c3_Err != nil {
@@ -398,7 +399,7 @@ func BlogPage(blog models.Blog, content []models.Paragraph) templ.Component {
 			var templ_7745c5c3_Var26 string
 			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Autor)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 101, Col: 86}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 102, Col: 86}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 			if templ_7745c5c3_Err != nil {
@@ -411,7 +412,7 @@ func BlogPage(blog models.Blog, content []models.Paragraph) templ.Component {
 			var templ_7745c5c3_Var27 string
 			templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Type)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 102, Col: 85}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 103, Col: 85}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 			if templ_7745c5c3_Err != nil {
@@ -424,7 +425,7 @@ func BlogPage(blog models.Blog, content []models.Paragraph) templ.Component {
 			var templ_7745c5c3_Var28 string
 			templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(blog.Date.Format("01-02-2006"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 103, Col: 42}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/blog.templ`, Line: 104, Col: 42}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 			if templ_7745c5c3_Err != nil {

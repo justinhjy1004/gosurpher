@@ -4,6 +4,7 @@ import (
 	"gosurpher/db"
 	"gosurpher/models"
 	"gosurpher/views"
+	"math/rand"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -12,11 +13,23 @@ import (
 // This Renders the 'front page' of the blog
 func BlogHandler(c echo.Context) error {
 
-	var b []models.Blog = db.Select_blogs()
+	blog_type := c.QueryParam("blog_type")
+
+	var b []models.Blog
+
+	if len(blog_type) == 0 {
+		b = db.Select_blogs()
+	} else {
+		b = db.Select_blogs_by_type(blog_type)
+	}
 
 	// Create a 300 character long summary for rendering in the card
 	var summary []string
 	var max_length int = 300
+
+	rand.Shuffle(len(b), func(i, j int) {
+		b[i], b[j] = b[j], b[i]
+	})
 
 	for i := range b {
 		if len(b[i].Content) < max_length {
