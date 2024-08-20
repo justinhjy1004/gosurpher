@@ -5,13 +5,31 @@ import (
 	"gosurpher/models"
 	"gosurpher/views"
 
-	"math/rand"
-
-	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/labstack/echo/v4"
 )
 
+func PoissonHandler(c echo.Context) error {
+
+	var b models.Blog = db.Select_blog_by_route("poisson")
+
+	return Render(c, views.Poisson(b))
+}
+
+func ExponentialHandler(c echo.Context) error {
+
+	var b models.Blog = db.Select_blog_by_route("exponential")
+
+	return Render(c, views.Exponential(b))
+}
+
+func GammaHandler(c echo.Context) error {
+
+	var b models.Blog = db.Select_blog_by_route("gamma")
+
+	return Render(c, views.Gamma(b))
+}
+
+/*
 func generateBarItems() []opts.BarData {
 	items := make([]opts.BarData, 0)
 	for i := 0; i < 7; i++ {
@@ -41,3 +59,4 @@ func HypergeometricHandler(c echo.Context) error {
 	return Render(c, views.Hypergeometric(b, bar_chart))
 
 }
+*/

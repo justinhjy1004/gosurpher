@@ -1,0 +1,94 @@
+// views/hypergeometric.templ
+package views
+
+import (
+	"gosurpher/models"
+)
+
+templ Link(url string, text string) {
+	<a class={ link_class } href={ templ.URL(url) }> [{ text }] </a>
+}
+
+templ Poisson(blog models.Blog) {
+	@Layout(blog.Autor) {
+		<div class="container mx-auto px-4 py-4 w-full items-center rounded-lg border shadow-md">
+			<section class="bg-white dark:bg-gray-900">
+				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+					<div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+						<h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">{ blog.Title }</h2>
+						<div class="flex flex-col gap-2 text-md">
+							<p class="text-base font-bold tracking-wide text-gray-900"></p>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Autor }</a>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Type }</a>
+							<br/>
+							<p>{ blog.Date.Format("01-02-2006") }</p>
+						</div>
+						<br/>
+						<p class="mb-4 font-dark">
+							{ blog.Content }
+						</p>
+						<p class="mb-4 font-light">
+							@Link("https://en.wikipedia.org/wiki/Poisson_distribution", "The Poisson Distribution") is the most important discrete distribution in probability theory, at least in the applied sense. With the probability density function being $$x^2$$
+						</p>
+					</div>
+				</div>		
+			</section>
+		</div>
+	}
+}
+
+templ Exponential(blog models.Blog) {
+	@Layout(blog.Autor) {
+		<div class="container mx-auto px-4 py-4 w-full items-center rounded-lg border shadow-md">
+			<section class="bg-white dark:bg-gray-900">
+				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+					<div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+						<h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">{ blog.Title }</h2>
+						<div class="flex flex-col gap-2 text-md">
+							<p class="text-base font-bold tracking-wide text-gray-900"></p>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Autor }</a>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Type }</a>
+							<br/>
+							<p>{ blog.Date.Format("01-02-2006") }</p>
+						</div>
+						<br/>
+						<p class="mb-4 font-dark">
+							{ blog.Content }
+						</p>
+						<p class="mb-4 font-light">
+							@Link("https://en.wikipedia.org/wiki/Exponential_distribution", "The Exponential Distribution") is ...
+						</p>
+					</div>
+				</div>		
+			</section>
+		</div>
+	}
+}
+
+templ Gamma(blog models.Blog) {
+	@Layout(blog.Autor) {
+		<div class="container mx-auto px-4 py-4 w-full items-center rounded-lg border shadow-md">
+			<section class="bg-white dark:bg-gray-900">
+				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+					<div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+						<h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">{ blog.Title }</h2>
+						<div class="flex flex-col gap-2 text-md">
+							<p class="text-base font-bold tracking-wide text-gray-900"></p>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Autor }</a>
+							<a class="text-base font-bold tracking-wide text-gray-900" href="#">{ blog.Type }</a>
+							<br/>
+							<p>{ blog.Date.Format("01-02-2006") }</p>
+						</div>
+						<br/>
+						<p class="mb-4 font-dark">
+							{ blog.Content }
+						</p>
+						<p class="mb-4 font-light">
+							@Link("https://en.wikipedia.org/wiki/Gamma_distribution", "The Gamma Distribution") is ...
+						</p>
+					</div>
+				</div>		
+			</section>
+		</div>
+	}
+}

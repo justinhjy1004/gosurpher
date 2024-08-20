@@ -14,8 +14,10 @@ generic handlers that handle repetitive pages (style-wise) */
 var route = map[string]interface{}{
 	"/":                     handlers.HomeHandler,
 	"/blog":                 handlers.BlogHandler,
-	"/hypergeometric":       handlers.HypergeometricHandler,
 	"/generic/:type/:route": handlers.GenericBlogHandler,
+	"poisson":               handlers.PoissonHandler,
+	"gamma":                 handlers.GammaHandler,
+	"exponential":           handlers.ExponentialHandler,
 }
 
 func main() {

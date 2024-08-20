@@ -63,7 +63,7 @@ templ BlogCard(blog models.Blog, summary string) {
 // Component that renders individual links in blogs
 var link_class = "font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline"
 
-templ Link(link models.Link) {
+templ RenderLink(link models.Link) {
 	<a class={ link_class } href={ templ.URL(link.Url) }>[{ link.Text }]</a>
 }
 
@@ -77,13 +77,13 @@ templ Paragraph(p models.Paragraph) {
 		{ p.Texts[0] }
 	} else if len(p.Texts) == 2 {
 		{ p.Texts[0] }
-		@Link(p.Urls[0])
+		@RenderLink(p.Urls[0])
 		{ p.Texts[1] }
 	} else {
 		{ p.Texts[0] }
 		for i := 1; i < len(p.Texts) - 1; i++ {
 			{ p.Texts[i] }
-			@Link(p.Urls[i-1])
+			@RenderLink(p.Urls[i-1])
 		}
 		{ p.Texts[len(p.Texts) - 1] }
 	}
