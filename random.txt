@@ -1,0 +1,27 @@
+Imagine being trapped in a room where you have a babbling fool of a professor in some business school who notably has no experience in the field of Artificial Intelligence or Machine Learning. Yet, because of ChatGPT, they decide to write about generative AI.
+
+What is the probability of you hearing the word \textit{AI} given the rate at which she blurts \textit{AI} at a rate of $\lambda$?
+
+This seems like a difficult task, but we can use the Poisson distribution to resolve this question. We can interpret $\lambda$ as the rate of occurrence, such that this professor uses the word excitedly. Even though all bad things must come to an end, often from 4:30 PM to 6:30 PM on Friday evenings, Poisson is a good approximation based on the Poisson Paradigm.
+
+\section*{Poisson Paradigm}
+The Poisson Paradigm states:
+
+\begin{quote}
+Let $A_1, A_2, \dots, A_n$ be events with probabilities $p(A_i)$ where $p(A_i)$ are small, and $A_j$ are either independent or weakly dependent. Then, let
+\[
+I(A) = \sum_{i=1}^n I(A_i)
+\]
+where $I(A_i)$ indicates if $A_i$ occurred. Then $I(A)$ is approximately Poisson distributed with parameter $\lambda$.
+\end{quote}
+
+In this context, we have the word \textit{AI} in a given meeting be $A_1, A_2, \dots, A_n$ and $p(A_i) = p(A_j)$ where $p(A_i)$ means the word $A_i$ is \textit{AI}.
+
+Assuming weak dependence, which understandably is a point of contention, the number of times you hear the word \textit{AI} is approximately Poisson distributed with parameter $\lambda = n \cdot p$.
+
+\section*{Probability Mass Function of the Poisson Distribution}
+Let $X \sim \text{Pois}(\lambda)$ and $k$ is the number of occurrences, then
+
+\[
+\Pr(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\]
