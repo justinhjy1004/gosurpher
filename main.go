@@ -2,6 +2,7 @@ package main
 
 import (
 	"gosurpher/handlers"
+	"os"
 
 	"github.com/labstack/echo/v4"
 )
@@ -33,6 +34,12 @@ func main() {
 		e.GET(r, h.(func(c echo.Context) error))
 	}
 
-	e.Logger.Fatal(e.Start(":42069"))
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "42069"
+	}
+
+	e.Logger.Fatal(e.Start("0.0.0.0:" + port))
 
 }
