@@ -13,8 +13,8 @@ unique pages have their own handlers, there are
 generic handlers that handle repetitive pages (style-wise) */
 
 var route = map[string]interface{}{
-	"/blog":                 handlers.HomeHandler,
-	"/":                     handlers.BlogHandler,
+	"/":                     handlers.HomeHandler,
+	"/blog":                 handlers.BlogHandler,
 	"/generic/:type/:route": handlers.GenericBlogHandler,
 	"poisson":               handlers.PoissonHandler,
 	"gamma":                 handlers.GammaHandler,

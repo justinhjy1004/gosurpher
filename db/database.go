@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"gosurpher/models"
+	"log"
 	"math/rand"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -17,7 +18,13 @@ var db_path string = "./db/gosurpher.db"
 // Select all blogs and return all the content in them
 func Select_blogs() []models.Blog {
 
-	db, _ := sql.Open(db_type, db_path)
+	db, err := sql.Open(db_type, db_path)
+
+	if err != nil {
+		// This will not be a connection error, but a DSN parse error or
+		// another initialization error.
+		log.Fatal("unable to use data source name", err)
+	}
 
 	// query
 	query := "SELECT * FROM Blog WHERE Id IN (SELECT Id FROM Blog ORDER BY RANDOM() LIMIT 10)"
