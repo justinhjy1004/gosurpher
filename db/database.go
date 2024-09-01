@@ -2,23 +2,27 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 	"gosurpher/models"
 	"log"
 	"math/rand"
+	"os"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 /* This handles the relevant function calls
 for the database for the application */
 
-var db_type string = "sqlite3"
-var db_path string = "./db/gosurpher.db"
+var db_type string = "mysql"
+var db_path string = os.Getenv("MYSQL_DATABASE")
 
 // Select all blogs and return all the content in them
 func Select_blogs() []models.Blog {
 
 	db, err := sql.Open(db_type, db_path)
+
+	fmt.Println(db_path)
 
 	if err != nil {
 		// This will not be a connection error, but a DSN parse error or
