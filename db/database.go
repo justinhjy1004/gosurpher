@@ -28,7 +28,7 @@ func Select_blogs() []models.Blog {
 	}
 
 	// query
-	query := "SELECT * FROM Blog"
+	query := "SELECT * FROM Blog WHERE Id IN (SELECT Id FROM Blog ORDER BY RANDOM() LIMIT 10)"
 	rows, _ := db.Query(query)
 
 	var blogs []models.Blog
