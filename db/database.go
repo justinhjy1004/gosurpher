@@ -14,7 +14,7 @@ import (
 /* This handles the relevant function calls
 for the database for the application */
 
-var db_type string = "sqlite3"
+var db_type string = "mysql"
 var db_path string = os.Getenv("MYSQL_URL")
 
 // Select all blogs and return all the content in them
