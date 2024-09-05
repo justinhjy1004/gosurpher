@@ -14,7 +14,7 @@ import (
 for the database for the application */
 
 var db_type string = "sqlite3"
-var db_path string = "./db/gosurpher.db"
+var db_path string = "app/db/gosurpher.db"
 
 // Select all blogs and return all the content in them
 func Select_blogs() []models.Blog {
