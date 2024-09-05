@@ -6,7 +6,6 @@ import (
 	"log"
 	"math/rand"
 	"os"
-	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -28,13 +27,8 @@ func Select_blogs() []models.Blog {
 		log.Fatal("unable to use data source name", err)
 	}
 
-	// See "Important settings" section.
-	db.SetConnMaxLifetime(time.Minute * 3)
-	db.SetMaxOpenConns(10)
-	db.SetMaxIdleConns(10)
-
 	// query
-	query := "SELECT * FROM Blog WHERE Id IN (SELECT Id FROM Blog ORDER BY RANDOM() LIMIT 10)"
+	query := "SELECT * FROM Blog"
 	rows, _ := db.Query(query)
 
 	var blogs []models.Blog
