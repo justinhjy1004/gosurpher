@@ -58,7 +58,7 @@ func Select_blog_by_route(route string) models.Blog {
 
 	db, _ := sql.Open(db_type, db_path)
 
-	rows, _ := db.Query("SELECT * FROM Blog WHERE Route = \"" + route + "\"")
+	rows, _ := db.Query("SELECT * FROM Blog WHERE Route = '" + route + "'")
 	rows.Next()
 
 	var blog models.Blog
