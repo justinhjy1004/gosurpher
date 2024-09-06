@@ -35,6 +35,12 @@ templ Layout(title string) {
 			</script>
 			<link rel="stylesheet" href="/css/output.css"/>
 			<link rel="icon" type="image/x-icon" href="/assets/gosurpher.ico">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+			<!-- The loading of KaTeX is deferred to speed up page rendering -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+			<!-- To automatically render math in text elements -->
+			<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+					onload="renderMathInElement(document.body);"></script>
 			<title>{ title }</title>
 		</head>
 		<nav class="bg-white border-gray-200">
