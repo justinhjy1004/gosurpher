@@ -7,14 +7,14 @@ import (
 	"math/rand"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 /* This handles the relevant function calls
 for the database for the application */
 
-var db_type string = "mysql"
-var db_path string = os.Getenv("MYSQL_URL")
+var db_type string = "pgx"
+var db_path string = os.Getenv("DATABASE_URL")
 
 // Select all blogs and return all the content in them
 func Select_blogs() []models.Blog {
