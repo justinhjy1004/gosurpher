@@ -102,3 +102,19 @@ func Select_blogs_by_type(blog_type string) []models.Blog {
 	return (blogs)
 
 }
+
+/*
+func Select_random_blog() models.Blog {
+
+	query := "SELECT * FROM Blog ORDER BY random() LIMIT 1"
+	rows.Next()
+
+	var blog models.Blog
+	rows.Scan(&blog.Id, &blog.Date, &blog.Title, &blog.Autor, &blog.Content, &blog.Route, &blog.Type)
+
+	rows.Close()
+	db.Close()
+
+	return (blog)
+
+}*/
